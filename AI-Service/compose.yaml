@@ -1,0 +1,31 @@
+services:
+  ai-postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_DB: jobportal_ai
+      POSTGRES_USER: ai
+      POSTGRES_PASSWORD: ai_local_password
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - ai_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai -d jobportal_ai"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+  ai-service:
+    profiles: ["service"]
+    build: .
+    env_file: .env
+    environment:
+      AI_DATABASE_URL: postgresql+psycopg://ai:ai_local_password@ai-postgres:5432/jobportal_ai
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      ai-postgres:
+        condition: service_healthy
+volumes:
+  ai_pgdata:

@@ -1,0 +1,151 @@
+﻿# Job Portal Frontend
+
+Live Demo: http://54.252.216.131:8080/
+
+## Overview
+
+This repository contains the frontend for a job portal application built with React, Vite, Tailwind CSS, and Redux Toolkit. It supports role-based workflows for candidates, recruiters, and administrators.
+
+## Key Features
+
+- Role-based authentication and dashboards
+- Candidate job discovery, details, and application flow
+- Recruiter job posting, editing, subscription, and billing pages
+- Admin dashboard and analytics access
+- Profile completion and management
+- Notifications and password recovery pages
+- API integration via Axios with `/api` proxy support
+
+## Tech Stack
+
+- React 19
+- Vite
+- Tailwind CSS 4
+- Redux Toolkit
+- React Router DOM
+- Axios
+- STOMP / SockJS for WebSocket support
+- Vitest / Jest for tests
+
+## Project Structure
+
+```
+.
+├─ index.html
+├─ package.json
+├─ vite.config.js
+├─ eslint.config.js
+├─ public/
+│  ├─ favicon.svg
+│  └─ icons.svg
+└─ src/
+   ├─ main.jsx
+   ├─ App.jsx
+   ├─ App.css
+   ├─ index.css
+   ├─ components/
+   │  ├─ Footer.jsx
+   │  ├─ Navbar.jsx
+   │  └─ ScrollToTop.jsx
+   ├─ pages/
+   │  ├─ AboutUs.jsx
+   │  ├─ AdminDashboard.jsx
+   │  ├─ ApplyJob.jsx
+   │  ├─ Billing.jsx
+   │  ├─ BrowseJobs.jsx
+   │  ├─ CompleteProfile.jsx
+   │  ├─ Dashboard.jsx
+   │  ├─ EditJob.jsx
+   │  ├─ ForgotPassword.jsx
+   │  ├─ Home.jsx
+   │  ├─ JobApplicants.jsx
+   │  ├─ JobApplications.jsx
+   │  ├─ JobDetails.jsx
+   │  ├─ Login.jsx
+   │  ├─ ManageProfile.jsx
+   │  ├─ NotificationsPage.jsx
+   │  ├─ PostJob.jsx
+   │  ├─ RoleSelection.jsx
+   │  ├─ Signup.jsx
+   │  └─ Subscription.jsx
+   ├─ redux/
+   │  ├─ analyticsSlice.js
+   │  ├─ applicationSlice.js
+   │  ├─ authSlice.js
+   │  ├─ interviewSlice.js
+   │  ├─ jobSlice.js
+   │  ├─ NotificationSlice.js
+   │  ├─ profileSlice.js
+   │  ├─ store.js
+   │  └─ subscriptionSlice.js
+   ├─ services/
+   │  └─ api.js
+   └─ tests/
+      ├─ setupTests.js
+      ├─ test-utils.jsx
+      └─ pages/
+         ├─ BrowseJobs.test.jsx
+         ├─ CompleteProfile.test.jsx
+         ├─ Dashboard.test.jsx
+         ├─ EditJob.test.jsx
+         ├─ JobDetails.test.jsx
+         ├─ Login.test.jsx
+         ├─ PostJob.test.jsx
+         └─ Signup.test.jsx
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ recommended
+- npm
+- Backend API running at `http://localhost:8080` for local development
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Locally
+
+```bash
+npm run dev
+```
+
+Open the browser at the local Vite URL shown in the terminal.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Run Tests
+
+```bash
+npm test
+```
+
+## Development Notes
+
+- The Vite server proxies API calls to `http://localhost:8080` in development.
+- Authentication and protected routes are handled in `src/App.jsx`.
+- Backend endpoints are expected to exist under the `/api` path.
+
+## Deployment
+
+The app is deployed and available at:
+
+http://54.252.216.131:8080/
+
+## License
+
+This repository is provided without warranty. Modify the README as needed for your project details.
